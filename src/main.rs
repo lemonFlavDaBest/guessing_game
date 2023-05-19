@@ -1,4 +1,7 @@
 use std::io;
+// To obtain user input and then print the result as output, we need to bring the io input/output library into scope. 
+// The io library comes from the standard library, known as std
+
 
 fn main() {
     println!("Guess the Number!");
