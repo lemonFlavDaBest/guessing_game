@@ -1,10 +1,17 @@
 use std::io;
+use std::cmp::Ordering;
+use rand::Rng;
+
 // To obtain user input and then print the result as output, we need to bring the io input/output library into scope. 
 // The io library comes from the standard library, known as std
 
 
 fn main() {
     println!("Guess the Number!");
+
+    let secret_number = rand::thread_rng().gen_range(1..=100);
+
+    println!("The secret number is: {secret_number}");
 
     println!("Please input your guess.");
 
@@ -15,4 +22,10 @@ fn main() {
         .expect("Failed to read line");
 
     println!("You guessed: {guess}");
+
+    match guess.cmp(&secret_number) {
+        Ordering::Less => println!("Too small!"),
+        Ordering::Greater => println!("Too big!"),
+        Ordering::Equal => println!("You win!"),
+    }
 }
